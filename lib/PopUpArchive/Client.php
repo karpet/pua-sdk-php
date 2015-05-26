@@ -77,6 +77,20 @@ class PopUpArchive_Client {
     /**
      *
      *
+     * @param string  $path
+     * @param array $payload
+     * @return $response object
+     */
+    public function post($path, $payload) {
+        $uri = sprintf("%s/api/%s", $this->host, $path);
+        $resp = $this->agent->post($uri, array('Content-Type'=>'application/json'), json_encode($payload));
+        return json_decode($resp->body);
+    }
+
+
+    /**
+     *
+     *
      * @return $collections array
      */
     public function get_collections() {
@@ -115,6 +129,30 @@ class PopUpArchive_Client {
      */
     public function search($params) {
         return $this->get("/search", $params);
+    }
+
+
+    /**
+     *
+     *
+     * @param unknown $coll_id
+     * @param unknown $item
+     * @return unknown
+     */
+    public function create_item($coll_id, $item) {
+        return $this->post("/collections/$coll_id/items", $item);
+    }
+
+
+    /**
+     *
+     *
+     * @param unknown $item_id
+     * @param unknown $audio
+     * @return unknown
+     */
+    public function create_audio_file($item_id, $audio) {
+        return $this->post("/items/$item_id/audio_files", array("audio_file" => $audio));
     }
 
 
