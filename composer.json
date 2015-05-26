@@ -1,0 +1,19 @@
+{
+  "name":"popuparchive/pua-sdk-php",
+  "type":"library",
+  "description":"PHP client for the Pop Up Archive API",
+  "keywords":["api", "pop up archive"],
+  "homepage":"https://github.com/popuparchive/pua-sdk-php",
+  "license":"Apache 2",
+  "require": {
+    "php": ">= 5.3.3",
+    "rmccue/requests": ">=1.0",
+    "vlucas/phpdotenv": ">=1.0"
+  },
+  "autoload":{
+    "psr-0": {
+      "Audiosearch\\":"lib/"
+    }
+  }
+}
+  
