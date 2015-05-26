@@ -33,6 +33,18 @@ $item = $client->get('/collections/1234/items/5678');
 # or idiomatically
 $item = $client->get_item(1234, 5678);
 
+# create an Item
+$new_item = $client->create_item($coll_id, array(
+    'title' => 'this is an item with remote audio files',
+    'extra' => array( 
+        'callback' => 'https://nosuchdomain.foo/callback/path' 
+    ),
+));
+
+$new_audio = $client->create_audio_file( $new_item->id, array(
+    'remote_file_url' => 'http://example.com/foo.mp3'
+));
+
 # search
 $res = $client->search(array('query' => 'test'));
 foreach($res->results as $items) {
